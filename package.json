@@ -1,0 +1,15 @@
+{
+  "name": "cylon-raspi",
+  "version": "0.0.0",
+  "description": "A simple cylon.js robot and a client to interact with it via API.",
+  "main": "robot.js",
+  "repository": "",
+  "author": "Claudiu O. <claudiuo@gmail.com>",
+  "dependencies": {
+    "cylon": "^1.0.0",
+    "cylon-api-http": "^0.3.0",
+    "cylon-api-mqtt": "^0.1.4",
+    "cylon-digispark": "^0.12.0",
+    "mqtt": "^1.1.3"
+  }
+}
