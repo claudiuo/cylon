@@ -13,6 +13,6 @@
     "mqtt": "^1.1.3"
   },
   "scripts": {
-    "preinstall": "sudo apt-get install libusb-0.1-4-dev"
+    "preinstall": "sudo apt-cache search libusb && sudo apt-get install libusb-0.1-4-dev"
   }
 }
