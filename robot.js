@@ -59,7 +59,7 @@ Cylon.robot({
 // ensure you install the API plugin first:
 // $ npm install cylon-api-mqtt
 Cylon.api('mqtt',{
-  broker: 'mqtt://test.mosquitto.org'//,
+  broker: 'mqtt://test.mosquitto.org',
   //port: '3000'
 });
 

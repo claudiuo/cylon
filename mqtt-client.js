@@ -26,8 +26,8 @@ var payload = JSON.stringify({
   sender: 'self'
 });
 
-client.subscribe('/api/robots');
-client.publish('/api/robots', payload);
+//client.subscribe('/api/robots');
+//client.publish('/api/robots', payload);
 
 client.subscribe('/api/robots/cybot');
 client.publish('/api/robots/cybot', payload);
@@ -55,11 +55,11 @@ var params = {
 
 payload = JSON.stringify(params);
 
-client.subscribe('/api/robots/cybot/commands/#');
+client.subscribe('/api/robots/cybot/cmd1');
 
 setInterval(function() {
   client.publish(
-    '/api/robots/cybot/command1',
+    '/api/robots/cybot/cmd1',
     payload);
 }, 2000);
 
