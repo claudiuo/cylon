@@ -7,7 +7,6 @@ Cylon.robot({
   name: 'cybot',
 
   // These are the events that will be registered in the API
-  // TODO: figure out how to use events!!!
   events: ['event1', 'event2', 'event3'],
   
   // These are the commands that will be available in the API
@@ -37,7 +36,7 @@ Cylon.robot({
     console.log("command1");
     console.log("p0 "+sender);
     console.log("p1 "+args);
-    // this.emit('event1');
+    this.emit('event1','stuff');
   },
 
   command2: function() {

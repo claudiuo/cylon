@@ -25,20 +25,20 @@ var payload = JSON.stringify({
   sender: 'self'
 });
 
-client.subscribe('/cybot/api/robots/cybot');
-client.publish('/cybot/api/robots/cybot', payload);
+//client.subscribe('/cybot/api/robots/cybot');
+//client.publish('/cybot/api/robots/cybot', payload);
 
-client.subscribe('/cybot/api/robots/cybot/devices');
-client.publish('/cybot/api/robots/cybot/devices', payload);
+//client.subscribe('/cybot/api/robots/cybot/devices');
+//client.publish('/cybot/api/robots/cybot/devices', payload);
 
-client.subscribe('/cybot/api/robots/cybot/events');
-client.publish('/cybot/api/robots/cybot/events', payload);
+//client.subscribe('/cybot/api/robots/cybot/events');
+//client.publish('/cybot/api/robots/cybot/events', payload);
 
 client.subscribe('/cybot/api/robots/cybot/commands');
 client.publish('/cybot/api/robots/cybot/commands', payload);
 
-client.subscribe('/cybot/listen/api/robots/cybot/commands');
-client.publish('/cybot/emit/api/robots/cybot/commands', payload);
+//client.subscribe('/cybot/listen/api/robots/cybot/commands');
+//client.publish('/cybot/emit/api/robots/cybot/commands', payload);
 
 // In order to be able to pass params to the commands
 // we need to convert them to json, since MQTT only
@@ -54,6 +54,7 @@ var params = {
 
 payload = JSON.stringify(params);
 
+client.subscribe('/cybot/api/robots/cybot/event1');
 client.subscribe('/cybot/api/robots/cybot/cmd1');
 
 setInterval(function() {
