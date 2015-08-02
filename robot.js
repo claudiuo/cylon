@@ -33,9 +33,11 @@ Cylon.robot({
     // for this example we will use API calls to command the robot
   },
 
-  command1: function() {
+  command1: function(sender, args) {
     console.log("command1");
-    this.emit('event1');
+    console.log("p0 "+sender);
+    console.log("p1 "+args);
+    // this.emit('event1');
   },
 
   command2: function() {
@@ -60,7 +62,7 @@ Cylon.robot({
 // $ npm install cylon-api-mqtt
 Cylon.api('mqtt',{
   broker: 'mqtt://test.mosquitto.org',
-  //port: '3000'
+  prefix: 'cybot', // Optional 
 });
 
 Cylon.start();
