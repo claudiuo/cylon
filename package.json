@@ -1,7 +1,7 @@
 {
-  "name": "cylon-raspi",
+  "name": "cylon-raspi-digispark",
   "version": "0.0.0",
-  "description": "A simple cylon.js robot and a client to interact with it via API.",
+  "description": "A simple cylon.js robot and a client to interact with it via mqtt API.",
   "main": "robot.js",
   "repository": "",
   "author": "Claudiu O. <claudiuo@gmail.com>",
@@ -10,6 +10,7 @@
     "cylon-api-http": "^0.3.0",
     "cylon-api-mqtt": "^0.1.4",
     "cylon-digispark": "^0.13.0",
+    "cylon-gpio": "^0.26.0",
     "mqtt": "^1.1.3"
   },
   "scripts": {
