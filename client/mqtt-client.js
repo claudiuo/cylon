@@ -59,7 +59,7 @@ client.subscribe('/cybot/api/robots/cybot/cmd1');
 
 setInterval(function() {
   client.publish(
-    '/cybot/api/robots/cybot/cmd1',
+    '/cybot/api/robots/cybot/cmd3',
     payload);
 }, 3000);
 
