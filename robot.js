@@ -2,6 +2,7 @@
 
 var Cylon = require('cylon');
 var toggleIndex = false;
+// var digisparkAvailable = true;
 
 Cylon.robot({
   name: 'cybot',
@@ -12,23 +13,25 @@ Cylon.robot({
   // These are the commands that will be available in the API
   // Commands method needs to return an object with the aliases
   // to the robot methods.
-//   commands: function() {
-//     return {
-//       cmd1: this.command1,
-//       cmd2: this.command2,
-//       cmd3: this.command3
-//     };
-//   },
+  commands: function() {
+    var commands = {};
+
+    commands.cmd1 = this.command1;
+    commands.cmd2 = this.command2;
+    commands.cmd3 = this.command3;
+
+    return commands;
+  },
 
   connections: {
-    // digispark: { adaptor: "digispark" },
+    digispark: { adaptor: "digispark" },
     loopback: { adaptor: 'loopback' }
   },
 
   devices: {
-    // red: { driver: "led", pin: 0, connection: 'digispark' },
-    // green: { driver: "led", pin: 1, connection: 'digispark' },
-    // blue: { driver: "led", pin: 2, connection: 'digispark' },
+    red: { driver: "led", pin: 0, connection: 'digispark' },
+    green: { driver: "led", pin: 1, connection: 'digispark' },
+    blue: { driver: "led", pin: 2, connection: 'digispark' },
     ping: { driver: 'ping', connection: 'loopback' }
   },
 
@@ -69,5 +72,20 @@ Cylon.api('mqtt',{
   broker: 'mqtt://test.mosquitto.org',
   prefix: 'cybot', // Optional 
 });
+
+// (function () {
+//   if(digisparkAvailable) {
+//     Cylon.robot.connections = {
+//       digispark: { adaptor: "digispark" },
+//       loopback: { adaptor: 'loopback' }
+//     };
+//     Cylon.robot.devices = {
+//       red: { driver: "led", pin: 0, connection: 'digispark' },
+//       green: { driver: "led", pin: 1, connection: 'digispark' },
+//       blue: { driver: "led", pin: 2, connection: 'digispark' },
+//       ping: { driver: 'ping', connection: 'loopback' }
+//     };
+//   }
+// })();
 
 Cylon.start();

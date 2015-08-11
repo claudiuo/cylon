@@ -28,8 +28,8 @@ var payload = JSON.stringify({
 //client.subscribe('/cybot/api/robots/cybot');
 //client.publish('/cybot/api/robots/cybot', payload);
 
-//client.subscribe('/cybot/api/robots/cybot/devices');
-//client.publish('/cybot/api/robots/cybot/devices', payload);
+client.subscribe('/cybot/api/robots/cybot/devices');
+client.publish('/cybot/api/robots/cybot/devices', payload);
 
 //client.subscribe('/cybot/api/robots/cybot/events');
 //client.publish('/cybot/api/robots/cybot/events', payload);
