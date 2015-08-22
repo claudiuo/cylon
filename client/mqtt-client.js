@@ -48,8 +48,7 @@ client.publish('/cybot/api/robots/cybot/commands', payload);
 // command, method or function as regular params,
 // in the same way `function.apply()` would do.
 var params = {
-  sender: 'self',
-  args: ['param1', 'param2', 'param3']
+  data: ['param1', 'param2', 'param3']
 };
 
 payload = JSON.stringify(params);

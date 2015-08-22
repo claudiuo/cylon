@@ -2,7 +2,6 @@
 
 var Cylon = require('cylon');
 var toggleIndex = false;
-// var digisparkAvailable = true;
 
 Cylon.robot({
   name: 'cybot',
@@ -39,30 +38,27 @@ Cylon.robot({
     // for this example we will use API calls to command the robot
   },
 
-  command1: function(sender, args) {
-    console.log("command1");
-    console.log("p0 "+sender);
-    console.log("p1 "+args);
-    this.emit('event1','stuff');
-
-    this.red.toggle();
+  command1: function(data) {
+    console.log("command1"+"-"+"p1 "+data);
+    // this.emit('event1','stuff');
+    this.red.toggle;
   },
 
   command2: function() {
     console.log("command2");
-    this.emit('event2');
+    // this.emit('event2');
   },
 
   command3: function(data) {
     console.log(data);
     toggleIndex = !toggleIndex;
     console.log("command3-"+toggleIndex);
-    this.emit('event3');
-    if (toggleIndex) {
-      this.emit('event1');
-    } else {
-      this.emit('event2');
-    }
+    // this.emit('event3');
+    // if (toggleIndex) {
+    //   this.emit('event1');
+    // } else {
+    //   this.emit('event2');
+    // }
   }  
 });
 
@@ -73,6 +69,7 @@ Cylon.api('mqtt',{
   prefix: 'cybot', // Optional 
 });
 
+// var digisparkAvailable = true;
 // (function () {
 //   if(digisparkAvailable) {
 //     Cylon.robot.connections = {
