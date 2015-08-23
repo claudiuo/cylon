@@ -36,30 +36,47 @@ Cylon.robot({
 
   work: function() {
     // for this example we will use API calls to command the robot
+ 		this.red.turnOff();
+ 		this.blue.turnOff();
+ 		this.green.turnOff();
   },
 
   command1: function(data) {
-    console.log("command1"+"-"+"p1 "+data);
+    console.log("command1"+"-"+data);
     // this.emit('event1','stuff');
-    this.red.toggle;
+    if(!!data) {
+    	if(this.red.currentBrightness() > 0) {
+    		this.red.brightness(0);
+    	} else {
+		  	this.red.brightness(data.toScale(0, 255));
+    	}
+    }
   },
 
-  command2: function() {
-    console.log("command2");
-    // this.emit('event2');
+  command2: function(data) {
+    console.log("command2"+"-"+data);
+    // this.emit('event2','stuff');
+    if(!!data) {
+    	if(this.green.currentBrightness() > 0) {
+    		this.green.brightness(0);
+    	} else {
+		  	this.green.brightness(data.toScale(0, 255));
+		  }
+    }
   },
 
   command3: function(data) {
-    console.log(data);
-    toggleIndex = !toggleIndex;
-    console.log("command3-"+toggleIndex);
-    // this.emit('event3');
-    // if (toggleIndex) {
-    //   this.emit('event1');
-    // } else {
-    //   this.emit('event2');
-    // }
-  }  
+    console.log("command3"+"-"+data);
+    // this.emit('event3','stuff');
+    if(!!data) {
+    	if(this.blue.currentBrightness() > 0) {
+    		this.blue.brightness(0);
+    	} else {
+		  	this.blue.brightness(data.toScale(0, 255));
+		  }
+    }
+  }
+
 });
 
 // ensure you install the API plugin first:

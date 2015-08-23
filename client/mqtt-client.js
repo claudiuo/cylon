@@ -47,20 +47,32 @@ client.publish('/cybot/api/robots/cybot/commands', payload);
 // in the payload and pass the params to the
 // command, method or function as regular params,
 // in the same way `function.apply()` would do.
-var params = {
-  data: ['param1', 'param2', 'param3']
-};
+// var params = {
+//   data: 100
+// };
 
-payload = JSON.stringify(params);
+// payload = JSON.stringify(params);
 
 client.subscribe('/cybot/api/robots/cybot/event1');
 client.subscribe('/cybot/api/robots/cybot/cmd1');
 
 setInterval(function() {
   client.publish(
-    '/cybot/api/robots/cybot/cmd3',
-    payload);
+    '/cybot/api/robots/cybot/cmd1',
+    JSON.stringify({data: 0.5}));
 }, 3000);
+
+setInterval(function() {
+  client.publish(
+    '/cybot/api/robots/cybot/cmd2',
+    JSON.stringify({data: 0.5}));
+}, 2000);
+
+setInterval(function() {
+  client.publish(
+    '/cybot/api/robots/cybot/cmd3',
+    JSON.stringify({data: 0.5}));
+}, 5000);
 
 // new example code assuming the device is an LED
 // client.subscribe('/cybot/listen/api/robots/cybot/devices/ping/toggle');
