@@ -15,15 +15,16 @@ Cylon.robot({
   commands: function() {
     var commands = {};
 
-    commands.cmd1 = this.command1;
-    commands.cmd2 = this.command2;
-    commands.cmd3 = this.command3;
+    commands.command1 = this.command1;
+    commands.command2 = this.command2;
+    commands.command3 = this.command3;
+    commands.turnAllOff = this.turnAllOff;
 
     return commands;
   },
 
   connections: {
-    digispark: { adaptor: "digispark" },
+    digispark: { adaptor: 'digispark' },
     loopback: { adaptor: 'loopback' }
   },
 
@@ -34,47 +35,50 @@ Cylon.robot({
     ping: { driver: 'ping', connection: 'loopback' }
   },
 
-  work: function() {
+  work: function(my) {
     // for this example we will use API calls to command the robot
- 		this.red.turnOff();
- 		this.blue.turnOff();
- 		this.green.turnOff();
+    after((1).seconds(), this.turnAllOff);
   },
+
+	turnAllOff: function() {
+		this.ledOff(this.red);
+		this.ledOff(this.blue);
+		this.ledOff(this.green);
+	},
 
   command1: function(data) {
     console.log("command1"+"-"+data);
     // this.emit('event1','stuff');
+    this.ledWork(data, this.red);
+  },
+
+  ledWork: function(data, led) {
     if(!!data) {
-    	if(this.red.currentBrightness() > 0) {
-    		this.red.brightness(0);
+    	if(led.currentBrightness() > 0) {
+    		led.brightness(0);
     	} else {
-		  	this.red.brightness(data.toScale(0, 255));
+		  	led.brightness(data.toScale(0, 255));
     	}
     }
+  },
+
+  ledOff: function(led) {
+  	// turn led off;
+		led.turnOff();
+  	// if led using PWM, also need to set the brightness to 0
+		led.brightness(0);
   },
 
   command2: function(data) {
     console.log("command2"+"-"+data);
     // this.emit('event2','stuff');
-    if(!!data) {
-    	if(this.green.currentBrightness() > 0) {
-    		this.green.brightness(0);
-    	} else {
-		  	this.green.brightness(data.toScale(0, 255));
-		  }
-    }
+    this.ledWork(data, this.green);
   },
 
   command3: function(data) {
     console.log("command3"+"-"+data);
     // this.emit('event3','stuff');
-    if(!!data) {
-    	if(this.blue.currentBrightness() > 0) {
-    		this.blue.brightness(0);
-    	} else {
-		  	this.blue.brightness(data.toScale(0, 255));
-		  }
-    }
+    this.ledWork(data, this.blue);
   }
 
 });
@@ -85,21 +89,5 @@ Cylon.api('mqtt',{
   broker: 'mqtt://test.mosquitto.org',
   prefix: 'cybot', // Optional 
 });
-
-// var digisparkAvailable = true;
-// (function () {
-//   if(digisparkAvailable) {
-//     Cylon.robot.connections = {
-//       digispark: { adaptor: "digispark" },
-//       loopback: { adaptor: 'loopback' }
-//     };
-//     Cylon.robot.devices = {
-//       red: { driver: "led", pin: 0, connection: 'digispark' },
-//       green: { driver: "led", pin: 1, connection: 'digispark' },
-//       blue: { driver: "led", pin: 2, connection: 'digispark' },
-//       ping: { driver: 'ping', connection: 'loopback' }
-//     };
-//   }
-// })();
 
 Cylon.start();
