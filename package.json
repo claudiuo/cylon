@@ -10,7 +10,9 @@
     "cylon-api-http": "^0.3.0",
     "cylon-api-mqtt": "^0.1.4",
     "cylon-digispark": "^0.13.0",
+    "cylon-firmata": "^0.23.0",
     "cylon-gpio": "^0.26.0",
+    "cylon-i2c": "^0.23.0",
     "mqtt": "^1.4.1"
   },
   "scripts": {
