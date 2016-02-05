@@ -25,14 +25,18 @@ Cylon.robot({
     this.device("green", {connection: "digispark", driver: "led", pin: 1});
     this.device("blue", {connection: "digispark", driver: "led", pin: 2});
     
+    var self = this;
     this.startDevice(this.devices.red, function() {
       console.log("Get ready to red...");
+      console.log(self.devices.red.name);
     });
     this.startDevice(this.devices.green, function() {
       console.log("Get ready to green...");
+      console.log(self.devices.green.name);
     });
     this.startDevice(this.devices.blue, function() {
       console.log("Get ready to blue...");
+      console.log(self.devices.blue.name);
     });
   },
 
@@ -50,8 +54,8 @@ Cylon.robot({
     // every((1).second(), function() {
     //   console.log(my.pinger.ping());
     // });
-    setInterval(function() {
-      console.log(my.pinger.ping());
-    }, 1000);
+    // setInterval(function() {
+    //   console.log(my.pinger.ping());
+    // }, 1000);
   }
 }).start();
